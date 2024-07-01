@@ -46,6 +46,26 @@ public class MazeView extends View {
         float offsetX = (width - (maze.length * cellSize)) / 2;
         float offsetY = (height - (maze.length * cellSize)) / 2;
 
+        // Top border
+        mazePath.moveTo(offsetX, offsetY);
+        mazePath.lineTo(offsetX + cellSize, offsetY);
+        mazePath.moveTo(offsetX + cellSize*2, offsetY);
+        mazePath.lineTo(offsetX + width, offsetY);
+
+        // Bottom border
+        mazePath.moveTo(offsetX, offsetY + maze.length * cellSize);
+        mazePath.lineTo(offsetX + (maze.length - 2) * cellSize, offsetY + maze.length * cellSize);
+        mazePath.moveTo(offsetX + (maze.length - 1) * cellSize, offsetY + maze.length * cellSize);
+        mazePath.lineTo(offsetX + maze.length * cellSize, offsetY + maze.length * cellSize);
+
+        // Left border
+        mazePath.moveTo(offsetX, offsetY);
+        mazePath.lineTo(offsetX, offsetY + maze.length * cellSize);
+
+        // Right border
+        mazePath.moveTo(offsetX + maze.length * cellSize, offsetY);
+        mazePath.lineTo(offsetX + maze.length * cellSize, offsetY + maze.length * cellSize);
+
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[0].length; j++) {
                 if (maze[i][j] == 1) { // If it's a wall
