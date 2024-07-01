@@ -26,7 +26,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        generateMaze();
+//        generateMaze();
+        mazeView.post(new Runnable() {
+            @Override
+            public void run() {
+                generateMaze();
+            }
+        });
     }
 
     private void generateMaze() {
